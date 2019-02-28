@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+<h1>CONTACTS</h1>
+<form method="post">
+    <a href="{% url 'contacts' %}">Add</a>
+    {% for eachOption in addContact %}
+    <a href="{% url 'edit' eachOption.id %}">
+        {{ eachOption.name }}
+    </a>
+
+    {{ eachOption.email}}
+    {{ eachOption.phone_Number }}
+
+        <a href="{% url 'delete' eachOption.id %}">Delete</a>
+    {% if not forloop.last %}
+    {{ eachOption.as_p }}
+    <hr>
+    {% endif %}
+    {% endfor %}
+
+</form>
+</body>
+</html>
